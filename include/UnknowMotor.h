@@ -23,14 +23,17 @@ void Motor2(int Pow) {
 }
 
 void Motor(int leftsp, int rightsp) {
-  Motor1(leftsp + BalanceMotorLeft);
   Motor2(rightsp + BalanceMotorRight);
+  Motor1(leftsp + BalanceMotorLeft);
 }
 
 void Move(int l, int r, int deelay) {
   Motor(l, r);
   delay(deelay);
 }
+
+
+
 
 void MotorStop() {
   analogWrite(EN1, 0);  

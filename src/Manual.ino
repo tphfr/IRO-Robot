@@ -44,8 +44,11 @@
 // >> ServoUp();     // ยกที่คีบ
 // >> ServoDown();   // วางที่คีบ
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
 /*Manual
 
 3 speeds:
@@ -62,8 +65,13 @@ FS(speed = 30); is forward, stopping when see line at front
 BS(speed = 30); is backward, stopping when see line at back
 S(); is MotorStop();
 
+<<<<<<< HEAD
 FL(speed = 30); is forward, stopping when end of the line
 BL(speed = 30); is backward, stopping when end of the line
+=======
+FE(speed = 30); is forward, stopping when end of the line
+BE(speed = 30); is backward, stopping when end of the line
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
 
 _F(distance); is forward outside line
 _B(distance); is backward outside line
@@ -84,6 +92,7 @@ LH(); is left Hook
 RH(); is right Hook
 */
 
+<<<<<<< HEAD
 void F(double speed = 55) {
   FF(speed, 'a');
   ToCenterC();
@@ -108,18 +117,49 @@ void b(double speed = 55) {
 }
 
 void R(double angle = 0) {
+=======
+void F_(double speed = 55) {
+  FF(speed, 'a');
+  ToCenterC();
+}
+
+void f_(double speed = 55) {
+  FF(speed, 'a');
+  ToCenter();
+}
+
+void B_(double speed = 55) {
+  BB(speed, 'a');
+  BackCenterC();
+}
+
+void b_(double speed = 55) {
+  BB(speed, 'a');
+  BackCenter();
+}
+
+void R_(double angle = 0) {
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
   if (angle == 0) {
     SpinR();
   }
   spin('R', angle);
+<<<<<<< HEAD
   delay(50);
 }
 
 void L(double angle = 0) {
+=======
+  //delay(50);
+}
+
+void L_(double angle = 0) {
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
   if (angle == 0) {
     SpinL();
   }
   spin('L', angle);
+<<<<<<< HEAD
   delay(50);
 }
 
@@ -140,17 +180,51 @@ void FL(double speed = 30) {
     PIDF(Speed, PID_KP, PID_KD);
     ReadCalibrateF();
     if ((F[0] > Ref && F[7] > Ref)) {
+=======
+  //delay(50);
+}
+
+void FS_(double speed = 30) {
+  FF(speed, 's');
+}
+
+void BS_(double speed = 30) {
+  BB(speed, 's');
+}
+
+void _S() {
+  MotorStop();
+}
+
+void S_() {
+  MotorStop();
+}
+
+void FE_(double Speed = 30) {
+  while (1) {
+    PIDF(Speed, PID_KP, PID_KD);
+    ReadCalibrateF();
+    if ((F[2] < Ref && F[5] < Ref && F[3] < Ref && F[4] < Ref)) {
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
       break;
     }
   }
   MotorStop();
 }
 
+<<<<<<< HEAD
 void BL(double speed = 30) {
   while (1) {
     PIDB(Speed, PID_KP, PID_KD);
     ReadCalibrateB();
     if ((B[0] > Ref && B[7] > Ref)) {
+=======
+void BE_(double Speed = 30) {
+  while (1) {
+    PIDB(Speed, PID_KP, PID_KD);
+    ReadCalibrateB();
+    if ((F[2] < Ref && F[5] < Ref && F[3] < Ref && F[4] < Ref)) {
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
       break;
     }
   }
@@ -158,6 +232,7 @@ void BL(double speed = 30) {
 }
 
 void _F(int Distance) {
+<<<<<<< HEAD
   movement(Distance * 0.01);
   MotorStop();
 }
@@ -170,12 +245,25 @@ void _B(int Distance) {
 void _R(int angle = 90) {
   spin('R', angle);
   MotorStop();
+=======
+  movement(Distance);
+}
+
+void _B(int Distance) {
+  movement(-Distance);
+}
+
+
+void _R(int angle = 90) {
+  spin('R', angle);
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
 }
 
 void _L(int angle = 90) {
   spin('L', angle);
 }
 
+<<<<<<< HEAD
 void _FR(int multiplier = 1) {
   movement(0.1 * multiplier);
   spin('R', 90);
@@ -213,6 +301,40 @@ void P() {
   delay(100);
   ServoUp();
   delay(100);
+=======
+void _FR(double distance = 1) {
+  movement(distance);
+  spin('R', 90);
+  movement(distance);
+}
+
+void _FL(double distance = 10) {
+  movement(distance);
+  spin('L', 90);
+  movement(distance);
+}
+
+void _BR(double distance = 10) {
+  movement(-distance);
+  spin('L', 90);
+  movement(-distance);
+}
+
+void _BL(double distance = 10) {
+  movement(-distance);
+  spin('R', 90);
+  movement(-distance);
+}
+
+void P() {
+  _B(3.3);
+  ServoDown();
+  delay(50);
+  ServoClose();
+  delay(50);
+  ServoUp();
+  delay(50);
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
 }
 
 void R() {
@@ -222,7 +344,10 @@ void R() {
   delay(100);
   ServoUp();
   delay(100);
+<<<<<<< HEAD
   ServoClose();
+=======
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
 }
 
 
@@ -232,11 +357,19 @@ void R() {
 
 void movement (double distance) {
   if (distance < 0) {
+<<<<<<< HEAD
     Move(-15*k, -15*k, -distance * 6870);
     MotorStop();
     return;
   }
   Move(15*k, 15*k, distance * 6870);
+=======
+    Move(-15*k, -15*k, -distance * 68.7);
+    MotorStop();
+    return;
+  }
+  Move(15*k, 15*k, distance * 43.7);
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
   MotorStop();
 }
 
@@ -253,16 +386,52 @@ void spin(char direction, double angle) {
   MotorStop();
 }
 
+<<<<<<< HEAD
 void go(double meters, double speed = 30) {
   if (meters > 0) {
     FFtimer(speed, meters * 65600 / (speed));
   }
   else if (meters < 0) {
     BBtimer(speed, -meters * 65600 / (speed));
+=======
+void go(double cm, double speed = 30) {
+  if (cm > 0) {
+    FFtimer(speed, cm * 656 / (speed));
+  }
+  else if (cm < 0) {
+    BBtimer(speed, -cm * 656 / (speed));
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
   }
   MotorStop();
 }
 
+<<<<<<< HEAD
+=======
+void got(double distance, double speed = 40) {
+  double target = speed - 15;
+  double traveldistance = distance * 2.0 / 3.0 - 5;
+
+  // ---- Initial forward movement (fixed 5 units) ----
+  Move(15*k, 15*k, 5 * 68.7 * (15.0 / 15.0));
+
+  // ---- Acceleration phase (15 → speed) ----
+  Move((15 + target/4)*k, (15 + target/4)*k, (traveldistance/6) * 68.7 * (15.0 / (15 + target/4)));
+  Move((15 + target/2)*k, (15 + target/2)*k, (traveldistance/6) * 68.7 * (15.0 / (15 + target/2)));
+  Move((15 + 3*target/4)*k, (15 + 3*target/4)*k, (traveldistance/6) * 68.7 * (15.0 / (15 + 3*target/4)));
+
+  // ---- Max speed segment ----
+  Move(speed*k, speed*k, (traveldistance/6) * 68.7 * (15.0 / speed));
+
+  // ---- Deceleration phase (speed → 30) ----
+  double decTarget = speed - 30;
+  Move((speed - decTarget/2)*k, (speed - decTarget/2)*k, (traveldistance/6) * 68.7 * (15.0 / (speed - decTarget/2)));
+  Move(30*k, 30*k, (traveldistance/6) * 68.7 * (15.0 / 30.0));
+
+  MotorStop();
+}
+
+
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986
 
 
 //Pre-made Functions
@@ -291,3 +460,36 @@ void RH() {
   FFR(55, 'R');
 }
 
+<<<<<<< HEAD
+=======
+//for small wave
+void wavesmall() {
+  FF(60,'p');
+  go(32);
+}
+
+void RBIG () {
+    FFL(60, 'l');
+    FFR(60, 'R');
+    FFL(60, 'l');
+}
+
+void LBIG () {
+    FFR(60, 'r');
+    FFL(60, 'L');
+    FFR(60, 'r');
+}
+
+//for zigzag, char is first turn
+void zigzag(char direction) {
+  if (direction == 'R') {
+  FFL(60, 'L');
+  FFR(50, 'R');
+  } else if (direction == 'L') {
+  FFR(60, 'R');
+  FFL(50, 'L');
+  } else {
+    // do nothing 
+  }
+}
+>>>>>>> 8199dbe7b7320476617ac85cff020532c42c3986

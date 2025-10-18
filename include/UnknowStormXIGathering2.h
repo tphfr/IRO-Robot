@@ -18,6 +18,9 @@ void RobotSetup() {
   servo1.attach(A0); // ต่อเซอร์โวตัวแรกที่ขา A0
   servo2.attach(A1); // ต่อเซอร์โวตัวที่สองที่ขา A1
   servo3.attach(A2); // ต่อเซอร์โวตัวที่สามที่ขา A2
+  float a = analogRead(A3);
+  a *= 5;
+  float m = 11.1/a;
   Beep(50);
   delay(500);
   delay(200);
